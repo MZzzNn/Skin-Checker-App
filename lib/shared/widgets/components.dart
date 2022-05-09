@@ -18,7 +18,7 @@ class DefaultButton extends StatelessWidget {
     this.width = double.infinity,
     required this.function,
     this.isUppercase = false,
-    this.radius = 20.0,
+    this.radius = 15.0,
     required this.text,
     this.height = 44.0,
     this.buttonColor = ColorManager.primary,
@@ -38,9 +38,57 @@ class DefaultButton extends StatelessWidget {
         onPressed: () => function(),
         child: Text(
           isUppercase ? text.toUpperCase() : text,
-          style: Theme.of(context).textTheme.bodyText1!
-              .copyWith(color: ColorManager.white, fontWeight: FontWeight.bold),
+          style: Theme.of(context)
+              .textTheme
+              .bodyText2!
+              .copyWith(color: ColorManager.white, fontWeight: FontWeight.bold,height: 2.0),
         ),
+      ),
+    );
+  }
+}
+
+
+/// A class that creates a text field with a label and a suffix icon.
+class DefaultFormField extends StatelessWidget {
+  final TextEditingController controller;
+  final TextInputType type;
+  final FormFieldValidator<String> validate;
+  final String label;
+  final IconData? suffix;
+  final bool isPassword;
+  final Function? suffixPressed;
+
+  const DefaultFormField(
+      {Key? key,
+      required this.controller,
+      required this.type,
+      required this.validate,
+      required this.label,
+      this.suffix,
+      this.suffixPressed,
+      this.isPassword = false})
+      : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return TextFormField(
+      controller: controller,
+      keyboardType: type,
+      obscureText: isPassword,
+      validator: validate,
+      cursorColor: ColorManager.primary,
+      decoration: InputDecoration(
+        contentPadding: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 10.0),
+        labelText: label,
+        suffixIcon: suffix != null
+            ? IconButton(
+                onPressed: () => suffixPressed!(),
+                icon: Icon(suffix,color: ColorManager.textPrimColor),
+                highlightColor: ColorManager.transparent,
+                splashColor: ColorManager.transparent,
+              )
+            : null,
       ),
     );
   }
@@ -52,6 +100,11 @@ navigateTo(BuildContext context, Widget screen) {
   Navigator.push(context, MaterialPageRoute(builder: (context) => screen));
 }
 
+
+/// It navigates to a new screen and replaces the current screen.
+navigateAndReplace(BuildContext context, Widget screen) {
+  Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => screen));
+}
 
 /// It takes in a path to an SVG file, a width, and a height, and returns a Hero
 customSvgPicture({required String path, required double width, required double height}) {
@@ -96,7 +149,10 @@ class CustomCircleBubble extends StatelessWidget {
 
 // custom row of logo and text
 class CustomLogoAndTitle extends StatelessWidget {
-  const CustomLogoAndTitle({Key? key}) : super(key: key);
+  final double? customSize;
+
+  const CustomLogoAndTitle({Key? key, this.customSize}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
@@ -107,15 +163,12 @@ class CustomLogoAndTitle extends StatelessWidget {
         customSvgPicture(
           path: 'assets/images/logo.svg',
           width: size.width * 0.3,
-          height: size.height * 0.1,
+          height: customSize ?? size.height * 0.1,
         ),
         SizedBox(width: size.width * 0.03),
         Text(
           'Skin Checker',
-          style: Theme.of(context)
-              .textTheme
-              .headline5!
-              .copyWith(fontSize: 20),
+          style: Theme.of(context).textTheme.bodyText1!.copyWith(height: 2.5),
         ),
       ],
     );

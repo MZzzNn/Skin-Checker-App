@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:klay/models/intro_model.dart';
+import '../../../models/intro_model.dart';
 import '../../../shared/style/color_manager.dart';
 import '../../../shared/widgets/components.dart';
 
@@ -22,9 +22,7 @@ class IntroBody extends StatelessWidget {
           model.text,
           textAlign: TextAlign.center,
           style: Theme.of(context).textTheme.bodyText1!.copyWith(
-              color: ColorManager.textPrimColor,
-              fontWeight: FontWeight.bold,
-              fontSize: 20),
+              color: ColorManager.textPrimColor),
         ),
       ],
     );

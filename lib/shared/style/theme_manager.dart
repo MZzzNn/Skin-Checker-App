@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import 'color_manager.dart';
 
 class ThemeManager {
@@ -24,6 +25,39 @@ class ThemeManager {
       splashColor: ColorManager.lightPrimary,
     ),
 
+    // input decoration theme (text form field)
+    inputDecorationTheme: const InputDecorationTheme(
+      isDense: true,
+      filled: true,
+      fillColor: ColorManager.lightPrimary,
+      // hint style
+      hintStyle: TextStyle(
+        fontSize: 17,
+        fontFamily: "Tajawal",
+        color: ColorManager.textPrimColor,
+        fontWeight: FontWeight.w500,
+      ),
+      // label style
+      labelStyle: TextStyle(
+        fontSize: 17,
+        fontFamily: "Tajawal",
+        color: ColorManager.textPrimColor,
+        fontWeight: FontWeight.w500,
+      ),
+      // error style
+      errorStyle: TextStyle(
+        fontSize: 17,
+        fontFamily: "Tajawal",
+        color: ColorManager.error,
+        fontWeight: FontWeight.w500,
+      ),
+
+      //  border
+      border: OutlineInputBorder(
+          borderRadius: BorderRadius.all(Radius.circular(8)),
+          borderSide: BorderSide.none),
+    ),
+
     /// Setting the default font for the app.
     fontFamily: "Tajawal",
     textTheme: const TextTheme(
@@ -32,6 +66,10 @@ class ThemeManager {
         fontWeight: FontWeight.bold,
       ),
       bodyText1: TextStyle(
+        fontSize: 20,
+        fontWeight: FontWeight.bold,
+      ),
+      bodyText2: TextStyle(
         fontSize: 18,
         fontWeight: FontWeight.w500,
       ),

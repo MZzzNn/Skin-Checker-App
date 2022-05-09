@@ -1,14 +1,19 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import '../login/login_screen.dart';
 import '../../shared/style/color_manager.dart';
 import '../../shared/widgets/components.dart';
-import '../sign_up/sign_up_screen.dart';
 
 
-class LoginScreen extends StatelessWidget {
+class SignUpScreen extends StatelessWidget {
+  TextEditingController firstNameController = TextEditingController();
+  TextEditingController lastNameController = TextEditingController();
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
-  LoginScreen({Key? key}) : super(key: key);
+  TextEditingController confirmPasswordController = TextEditingController();
+  TextEditingController locationController = TextEditingController();
+  SignUpScreen({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
@@ -21,24 +26,39 @@ class LoginScreen extends StatelessWidget {
             padding: EdgeInsets.symmetric(horizontal: size.width * 0.08),
             child: Column(
               children: [
-                SizedBox(height: size.height * 0.2),
-
+                SizedBox(height: size.height * 0.1),
                 const CustomLogoAndTitle(customSize: 65),
-                SizedBox(height: size.height * 0.07),
-                Text('Sign in',
+                SizedBox(height: size.height * 0.03),
+                Text('Sign up',
                     style: Theme.of(context)
                         .textTheme
                         .bodyText1!
                         .copyWith(color: ColorManager.primary)),
                 SizedBox(height: size.height * 0.005),
-                Text('Enter your email and password',
+                Text('Create an account',
                     style: Theme.of(context)
                         .textTheme
-                        .bodyText2!
+                        .bodyText1!
                         .copyWith(color: ColorManager.black, fontSize: 18)),
                 SizedBox(height: size.height * 0.03),
-
-                /// Email
+                DefaultFormField(
+                  controller: firstNameController,
+                  type: TextInputType.name,
+                  validate: (String? value) {
+                    return null;
+                  },
+                  label: 'First name',
+                ),
+                SizedBox(height: size.height * 0.017),
+                DefaultFormField(
+                  controller: lastNameController,
+                  type: TextInputType.name,
+                  validate: (String? value) {
+                    return null;
+                  },
+                  label: 'Last name',
+                ),
+                SizedBox(height: size.height * 0.017),
                 DefaultFormField(
                   controller: emailController,
                   type: TextInputType.emailAddress,
@@ -47,10 +67,7 @@ class LoginScreen extends StatelessWidget {
                   },
                   label: 'Email',
                 ),
-
                 SizedBox(height: size.height * 0.017),
-
-                //Password
                 DefaultFormField(
                   controller: passwordController,
                   type: TextInputType.visiblePassword,
@@ -62,43 +79,50 @@ class LoginScreen extends StatelessWidget {
                   },
                   label: 'Password',
                 ),
-
-                SizedBox(height: size.height * 0.015),
-
-                Align(
-                  alignment: Alignment.topLeft,
-                  child: Text('Forget password?',
-                      style: Theme.of(context).textTheme.bodyText2!
-                          .copyWith(color: ColorManager.primary, fontSize: 16)),
+                SizedBox(height: size.height * 0.017),
+                DefaultFormField(
+                  controller: confirmPasswordController,
+                  type: TextInputType.visiblePassword,
+                  suffix: Icons.remove_red_eye,
+                  isPassword: false,
+                  suffixPressed: () {},
+                  validate: (String? value) {
+                    return null;
+                  },
+                  label: 'Confirm password',
                 ),
-
+                SizedBox(height: size.height * 0.017),
+                DefaultFormField(
+                  controller: locationController,
+                  type: TextInputType.text,
+                  validate: (String? value) {
+                    return null;
+                  },
+                  label: 'Location',
+                ),
                 SizedBox(height: size.height * 0.025),
-
                 DefaultButton(
                   function: () {},
-                  text: 'Sign in',
+                  text: 'Sign up',
                   width: size.width * 0.5,
                 ),
                 SizedBox(height: size.height * 0.015),
-
                 Text.rich(
                   TextSpan(
-                    text: 'Don\'t have an account? ',
+                    text: 'have an account? ',
                     style: Theme.of(context).textTheme.bodyText2!
                         .copyWith(color: ColorManager.grey,fontSize: 16),
                     children: [
                       TextSpan(
-                          text: 'Sign up',
+                          text: 'log in',
                           style: Theme.of(context).textTheme.bodyText2!
                               .copyWith(color: ColorManager.primary,fontSize: 16),
                           recognizer: TapGestureRecognizer()
-                            ..onTap = () => navigateAndReplace(context, SignUpScreen())
-                            ),
+                            ..onTap = () => navigateAndReplace(context, LoginScreen())
+                      ),
                     ],
                   ),
-                ),
-
-
+                )
               ],
             ),
           ),

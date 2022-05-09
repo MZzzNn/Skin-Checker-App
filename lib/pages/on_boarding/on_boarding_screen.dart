@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:klay/pages/on_boarding/widget/intro_body.dart';
-import 'package:klay/shared/style/color_manager.dart';
-import 'package:klay/shared/widgets/components.dart';
+import 'widget/intro_body.dart';
+import '../../shared/style/color_manager.dart';
+import '../../shared/widgets/components.dart';
 import '../../models/intro_model.dart';
 import '../login/login_screen.dart';
 
@@ -54,7 +54,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                   child: InkWell(
                     onTap: () {
                       if (_currentPage == introListDoctor.length - 1) {
-                        navigateTo(context,const LoginScreen());
+                        navigateTo(context, LoginScreen());
                       } else {
                         _pageController.nextPage(
                           duration: const Duration(milliseconds: 300),

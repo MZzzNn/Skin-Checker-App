@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:klay/pages/get_started/get_started_screen.dart';
-import 'package:klay/shared/style/theme_manager.dart';
+import 'pages/get_started/get_started_screen.dart';
+import 'shared/style/theme_manager.dart';
 
 void main() => runApp(const MyApp());
 
