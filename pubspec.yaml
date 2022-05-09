@@ -30,14 +30,8 @@ flutter:
 
 
   assets:
-    - assets/fonts/Tajawal-Bold.ttf
-    - assets/fonts/Tajawal-Medium.ttf
-    - assets/fonts/Tajawal-Regular.ttf
-    - assets/images/intro_doctor1.svg
-    - assets/images/intro_doctor2.svg
-    - assets/images/intro_patient1.svg
-    - assets/images/intro_patient2.svg
-    - assets/images/logo.svg
+    - assets/images/
+
   fonts:
     - family: Tajawal
       fonts:
