@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import '../../../models/intro_model.dart';
 import '../../../shared/style/color_manager.dart';
-import '../../../shared/widgets/components.dart';
 
 class IntroBody extends StatelessWidget {
   final IntroModel model;
@@ -12,17 +12,17 @@ class IntroBody extends StatelessWidget {
     final size = MediaQuery.of(context).size;
     return Column(
       children: [
-        customSvgPicture(
-          path: model.imageUrl,
+        SvgPicture.asset(
+          model.imageUrl,
           width: size.width * 0.7,
-          height: null,
+          height:size.height * 0.39,
         ),
         SizedBox(height: size.height * 0.03),
         Text(
           model.text,
           textAlign: TextAlign.center,
-          style: Theme.of(context).textTheme.bodyText1!.copyWith(
-              color: ColorManager.textPrimColor),
+          style: Theme.of(context).textTheme.bodyText1!
+              .copyWith(color: ColorManager.textPrimColor),
         ),
       ],
     );

@@ -79,7 +79,7 @@ class LoginScreen extends StatelessWidget {
                   text: 'Sign in',
                   width: size.width * 0.5,
                 ),
-                SizedBox(height: size.height * 0.015),
+                SizedBox(height: size.height * 0.025),
 
                 Text.rich(
                   TextSpan(
@@ -90,7 +90,7 @@ class LoginScreen extends StatelessWidget {
                       TextSpan(
                           text: 'Sign up',
                           style: Theme.of(context).textTheme.bodyText2!
-                              .copyWith(color: ColorManager.primary,fontSize: 16),
+                              .copyWith(color: ColorManager.primary,fontSize: 16,fontWeight: FontWeight.bold),
                           recognizer: TapGestureRecognizer()
                             ..onTap = () => navigateAndReplace(context, SignUpScreen())
                             ),

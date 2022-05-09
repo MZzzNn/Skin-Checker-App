@@ -16,6 +16,13 @@ class OnBoardingScreen extends StatefulWidget {
 class _OnBoardingScreenState extends State<OnBoardingScreen> {
   final PageController _pageController = PageController();
   int _currentPage = 0;
+  late List<IntroModel> _introModels =[];
+  @override
+  void initState() {
+    _introModels = widget.introPageType == IntroPageType.DOCTOR ?
+    introListDoctor: introListPatient ;
+    super.initState();
+  }
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
@@ -35,11 +42,10 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                   child: PageView.builder(
                     physics: const BouncingScrollPhysics(),
                     itemBuilder: (context, index) =>
-                        IntroBody( model: widget.introPageType == IntroPageType.DOCTOR ?
-                        introListDoctor[_currentPage]: introListPatient[_currentPage] ) ,
+                        IntroBody( model:  _introModels [index]),
                     itemCount: introListDoctor.length,
                     controller: _pageController,
-                    onPageChanged: (int page)=> setState(() => _currentPage = page),
+                    onPageChanged: (int page) => setState(() => _currentPage = page),
                   ),
                 ),
                 SizedBox(height: size.height * 0.02),
