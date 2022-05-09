@@ -107,7 +107,7 @@ navigateAndReplace(BuildContext context, Widget screen) {
 }
 
 /// It takes in a path to an SVG file, a width, and a height, and returns a Hero
-customSvgPicture({required String path, required double width, required double height}) {
+customSvgPicture({required String path, required double width, required double? height}) {
   return Hero(
     tag: path,
     child: SvgPicture.asset(

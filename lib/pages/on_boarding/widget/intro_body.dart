@@ -15,7 +15,7 @@ class IntroBody extends StatelessWidget {
         customSvgPicture(
           path: model.imageUrl,
           width: size.width * 0.7,
-          height: size.height * 0.4,
+          height: null,
         ),
         SizedBox(height: size.height * 0.03),
         Text(
